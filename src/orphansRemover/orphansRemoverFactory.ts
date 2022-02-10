@@ -1,19 +1,19 @@
 import { Text } from "mdast";
-import { OrphansRemoverFactory } from "../types";
+import { Handler, OrphansRemoverFactory } from "../types";
 import defaultHandlers from "./handlers";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const visit = require("unist-util-visit");
 
 const createOrphansRemover: OrphansRemoverFactory = (locale, options = {}) => {
-  const handlers = [];
+  let handlers: Handler[] = [];
 
   if (!options.disableBuiltInHandlers && defaultHandlers[locale]) {
-    handlers.push(...defaultHandlers[locale]);
+    handlers = handlers.concat(defaultHandlers[locale]);
   }
 
   if (options.customHandlers && options.customHandlers[locale]) {
-    handlers.push(...options.customHandlers[locale]);
+    handlers = handlers.concat(options.customHandlers[locale]);
   }
 
   return {
@@ -28,7 +28,7 @@ const createOrphansRemover: OrphansRemoverFactory = (locale, options = {}) => {
             node.value.matchAll(handler.regex),
             (m) => m[0]
           );
-          const uniqueMatches = [...new Set(matches)];
+          const uniqueMatches = Array.from(new Set(matches));
 
           for (const match of uniqueMatches) {
             const regex = new RegExp(`${match.replace(".", "[.]")}`, "g");
