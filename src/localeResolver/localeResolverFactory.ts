@@ -1,4 +1,4 @@
-import { LocaleResolver, LocaleResolverFactory, MarkdownNode } from "../types";
+import { LocaleResolver, LocaleResolverFactory } from "../types";
 import defaultLocaleResolver from "./localeResolver";
 
 const createLocaleResolver: LocaleResolverFactory = (options = {}) => {
