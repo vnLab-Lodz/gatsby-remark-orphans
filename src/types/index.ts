@@ -1,5 +1,7 @@
 import { Root } from "mdast";
 
+//#region Plugin types
+
 export interface MarkdownNode {
   fields: { locale?: string; [key: string]: any };
   frontmatter: { locale?: string; [key: string]: any };
@@ -16,7 +18,12 @@ export interface Params {
   };
 }
 
-export type Options = LocaleResolverFactoryOptions;
+export type Options = LocaleResolverFactoryOptions &
+  OrphansRemoverFactoryOptions;
+
+//#endregion
+
+//#region Locale resolver types
 
 export type LocaleResolver = (markdownNode: MarkdownNode) => string | undefined;
 
@@ -28,3 +35,30 @@ export interface LocaleResolverFactoryOptions {
 export type LocaleResolverFactory = (
   options?: LocaleResolverFactoryOptions
 ) => LocaleResolver;
+
+//#endregion
+
+//#region Orphans handler types
+
+export interface Handler {
+  regex: RegExp;
+  replacer: (match: string) => string;
+}
+
+export interface OrphansRemover {
+  locale: string;
+  handlers: Handler[];
+  execute: (markdownAST: Root) => void;
+}
+
+export interface OrphansRemoverFactoryOptions {
+  disableBuiltInHandlers?: boolean;
+  customHandlers?: Record<string, Handler[]>;
+}
+
+export type OrphansRemoverFactory = (
+  locale: string,
+  options?: OrphansRemoverFactoryOptions
+) => OrphansRemover;
+
+//#endregion
