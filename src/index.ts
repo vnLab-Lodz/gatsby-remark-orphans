@@ -12,9 +12,10 @@ export = function (params: Params, options: Options) {
 
   const locale = resolveLocale(markdownNode);
   if (locale === undefined) {
-    reporter.warn(
-      `[gatsby-remark-orphans]: No locale found for markdown node (id: ${markdownNode.id}).`
-    );
+    if (!options.silenceReporting)
+      reporter.warn(
+        `[gatsby-remark-orphans]: No locale found for markdown node (id: ${markdownNode.id}).`
+      );
     return markdownAST;
   }
 
@@ -24,9 +25,10 @@ export = function (params: Params, options: Options) {
   });
 
   if (orphansRemover.handlers.length === 0) {
-    reporter.warn(
-      `[gatsby-remark-orphans]: No handlers found for locale "${locale}". Skipping orphans removal for markdown node (id: ${markdownNode.id}).`
-    );
+    if (!options.silenceReporting)
+      reporter.warn(
+        `[gatsby-remark-orphans]: No handlers found for locale "${locale}". Skipping orphans removal for markdown node (id: ${markdownNode.id}).`
+      );
     return markdownAST;
   }
 

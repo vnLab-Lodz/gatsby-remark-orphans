@@ -19,7 +19,9 @@ export interface Params {
 }
 
 export type Options = LocaleResolverFactoryOptions &
-  OrphansRemoverFactoryOptions;
+  OrphansRemoverFactoryOptions & {
+    silenceReporting?: boolean;
+  };
 
 //#endregion
 
