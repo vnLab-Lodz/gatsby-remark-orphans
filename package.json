@@ -11,7 +11,8 @@
     "lint": "eslint ./src/** --ext .ts,.tsx",
     "test": "jest",
     "link": "tsc && copy /Y package.json dist && copy /Y readme.md dist && cd dist && npm link",
-    "build": "tsc && copy /Y package.json dist && copy /Y readme.md dist"
+    "build": "tsc && copy /Y package.json dist && copy /Y readme.md dist",
+    "publish": "tsc && copy /Y package.json dist && copy /Y readme.md dist && cd dist && npm publish"
   },
   "keywords": [
     "gatsby",
