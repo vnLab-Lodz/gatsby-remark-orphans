@@ -16,7 +16,7 @@
     "test": "jest",
     "link": "tsc && copy /Y package.json dist && copy /Y readme.md dist && cd dist && npm link",
     "build": "tsc && copy /Y package.json dist && copy /Y readme.md dist",
-    "publish-npm": "tsc && copy /Y package.json dist && copy /Y readme.md dist && cd dist && npm publish"
+    "publish-npm": "tsc && copy /Y package.json dist && copy /Y readme.md dist && npm publish"
   },
   "keywords": [
     "gatsby",
