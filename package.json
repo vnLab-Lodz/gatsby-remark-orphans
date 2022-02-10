@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-orphans",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gatsby plugin for removing orphans in markdown text.",
   "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
