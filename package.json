@@ -9,7 +9,7 @@
   "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
   "files": [
-    "dist/**"
+    "dist/**/*"
   ],
   "scripts": {
     "lint": "eslint ./src/** --ext .ts,.tsx",
