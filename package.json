@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/vnLab-Lodz/gatsby-remark-orphans.git"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Gatsby plugin for removing orphans in markdown text.",
   "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
