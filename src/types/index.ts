@@ -9,6 +9,11 @@ export interface MarkdownNode {
 export interface Params {
   markdownAST: Root;
   markdownNode: MarkdownNode;
+  reporter: {
+    error: (message: string) => void;
+    info: (message: string) => void;
+    warn: (message: string) => void;
+  };
 }
 
 export type Options = LocaleResolverFactoryOptions;
