@@ -21,5 +21,5 @@ export interface LocaleResolverFactoryOptions {
 }
 
 export type LocaleResolverFactory = (
-  options: LocaleResolverFactoryOptions
+  options?: LocaleResolverFactoryOptions
 ) => LocaleResolver;
